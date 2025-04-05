@@ -10,6 +10,8 @@ services:
       - MYSQL_DATABASE=${MYSQL_DATABASE}
       - MYSQL_USER=${MYSQL_USER}
       - MYSQL_PASSWORD=${MYSQL_PASSWORD}
+      - DB_USER=${MYSQL_USER}
+      - DB_PASSWORD=${MYSQL_PASSWORD}
     volumes:
       - mariadb-contact-form-data:/var/lib/mysql
     networks:
@@ -33,7 +35,7 @@ services:
 
   api-contact-form:
     build: .
-    image: api-contact-form:1.0.1
+    image: api-contact-form
     container_name: api-contact-form
     restart: on-failure
     depends_on:
